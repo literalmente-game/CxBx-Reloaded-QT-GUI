@@ -1,0 +1,10 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>images/play.png</file>
+    <file>images/stop.png</file>
+	<file>images/cxbx.ico</file>
+	<file>images/logos/smashing_drive.png</file>
+	<file>images/logos/tenchu_return_from_darkness.png</file>
+	<file>images/logos/yugioh_the_dawn_of_destiny.png</file>
+</qresource>
+</RCC>
