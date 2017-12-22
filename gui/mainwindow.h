@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QTableView>
+#include <QSettings>
+#include <QProcess>
+#include "models/xbetablemodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,9 +34,13 @@ private slots:
 
     void on_actionEmulation_triggered();
 
+    void on_actionEmulationStop_triggered();
+
 private:
     Ui::MainWindow *ui;
-
+    QTableView *gameTableView;
+    QSettings *settings;
+    QProcess emulatorProcess;
 };
 
 #endif // MAINWINDOW_H
