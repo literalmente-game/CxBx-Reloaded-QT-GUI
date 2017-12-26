@@ -8,8 +8,9 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "settings_emulation.h"
-#include "ui_settings_emulation.h"
+
+#include "emu_settings.h"
+#include "ui_emu_settings.h"
 
 
 
@@ -96,7 +97,8 @@ void MainWindow::on_actionAbout_triggered()
 //Load the Emulation settings window
 void MainWindow::on_actionEmulation_triggered()
 {
-
+    Emu_Settings *emu = new Emu_Settings(this);
+    emu->show();
 }
 
 void MainWindow::on_actionEmulationStop_triggered()

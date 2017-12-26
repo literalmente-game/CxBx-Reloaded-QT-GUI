@@ -14,14 +14,19 @@ RC_FILE = myapp.rc
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    settings_emulation.cpp \
-    models/xbetablemodel.cpp
+    models/xbetablemodel.cpp \
+    emu_settings.cpp \
+    directory.cpp \
+    settings_emulation.cpp
 
 HEADERS  += mainwindow.h \
-    settings_emulation.h \
-    models/xbetablemodel.h
+    models/xbetablemodel.h \
+    emu_settings.h \
+    directory.h \
+    settings_emulation.h
 
 FORMS    += mainwindow.ui \
+    emu_settings.ui \
     settings_emulation.ui
 
 RESOURCES += \

@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author/>
+ <comment/>
+ <exportmacro/>
  <class>Settings_Emulation</class>
- <widget class="QWidget" name="Settings_Emulation">
+ <widget name="Settings_Emulation" class="QWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>473</width>
-    <height>337</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
  </widget>
- <resources/>
+ <pixmapfunction/>
  <connections/>
 </ui>
