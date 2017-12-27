@@ -136,7 +136,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="edtRoms"/>
+        <widget class="QLineEdit" name="edtRoms">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnSearch_Roms">

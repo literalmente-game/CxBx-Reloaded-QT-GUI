@@ -6,6 +6,8 @@
 #include <QSettings>
 #include <QProcess>
 #include "models/xbetablemodel.h"
+#include "emu_settings.h"
+#include "ui_emu_settings.h"
 
 namespace Ui {
 class MainWindow;
@@ -41,6 +43,7 @@ private:
     QTableView *gameTableView;
     QSettings *settings;
     QProcess emulatorProcess;
+    Emu_Settings *emu;
 };
 
 #endif // MAINWINDOW_H
