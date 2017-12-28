@@ -8,9 +8,6 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "settings_emulation.h"
-#include "ui_settings_emulation.h"
-
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -27,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->gameTableView->setModel(new XbeTableModel(this->settings->value("game_dir").toString()));
     this->gameTableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+
+    this->emu = new Emu_Settings(this);
 }
 
 MainWindow::~MainWindow()
@@ -60,8 +59,9 @@ void MainWindow::on_actionEmulationStart_triggered()
     int index = selectionModel->selectedIndexes().at(0).row();
 
     QString xbePath = model->getXbe(index)->m_szPath;
-    QString program = this->settings->value("cxbx_path").toString();
 
+    /*The emulator open, but doesn't execute the game in this path.*/
+    QString program = emu->loadDir(); /*OLD CODE: this->settings->value("cxbx_path").toString();*/
     this->emulatorProcess.start(program, QStringList() << xbePath);
 }
 
@@ -72,9 +72,9 @@ void MainWindow::on_actionOpen_Xbe_triggered()
     QString fileName = QFileDialog::getOpenFileName(this,tr("Open"),"",tr("*.xbe"));
 
    //Run the .xbe as an argument for the emulator if the argument isn't empty
-    if (fileName != ""){
+    if (!fileName.isEmpty()){
 
-        QString program = "E:\\Emulators\\XBox\\Emulators\\11-30\\Cxbx.exe "; //hard coded path, should be dynamic in the future
+        QString program = emu->loadDir(); // "E:\\Emulators\\XBox\\Emulators\\11-30\\Cxbx.exe " //hard coded path, should be dynamic in the future
         QStringList arguments;
         QString temp_path; // = "\"" + fileName + "\""; enquotations are not working for some reason?
         temp_path = QDir::toNativeSeparators(fileName); //QDir::toNativeSeparators makes sure the path obtained by QFileDialog::getOpenFileName is valid as a native path
@@ -96,7 +96,7 @@ void MainWindow::on_actionAbout_triggered()
 //Load the Emulation settings window
 void MainWindow::on_actionEmulation_triggered()
 {
-
+    emu->show();
 }
 
 void MainWindow::on_actionEmulationStop_triggered()
