@@ -60,7 +60,7 @@
      <x>0</x>
      <y>0</y>
      <width>892</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -172,7 +172,7 @@
   </action>
   <action name="actionGo_To_The_Official_CxBx_Reloaded_Website">
    <property name="text">
-    <string>Go To The Official CxBx-Reloaded Website...</string>
+    <string>CxBx-Reloaded Website...</string>
    </property>
   </action>
   <action name="actionAbout">

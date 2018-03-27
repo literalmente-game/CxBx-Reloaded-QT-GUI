@@ -15,14 +15,19 @@ RC_FILE = myapp.rc
 SOURCES += main.cpp\
         mainwindow.cpp \
     models/xbetablemodel.cpp \
-    emu_settings.cpp
+    emu_settings.cpp \
+    config.cpp \
+    about.cpp
 
 HEADERS  += mainwindow.h \
     models/xbetablemodel.h \
-    emu_settings.h
+    emu_settings.h \
+    config.h \
+    about.h
 
 FORMS    += mainwindow.ui \
-    emu_settings.ui
+    emu_settings.ui \
+    about.ui
 
 RESOURCES += \
     images.qrc
