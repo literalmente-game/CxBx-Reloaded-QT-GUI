@@ -10,7 +10,6 @@ Emu_Settings::Emu_Settings(QWidget *parent) :
     ui(new Ui::Emu_Settings)
 {
     ui->setupUi(this);
-    this->ui->edtCxbx->setText("BATMAN");
 }
 
 Emu_Settings::~Emu_Settings()

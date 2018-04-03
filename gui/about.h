@@ -16,10 +16,15 @@ public:
     ~About();
 
 private slots:
-    void on_pbtnOK_clicked();
+    void on_btnOK_clicked();
+
+    void on_btnGithub_clicked();
+
+    void on_btnContributors_clicked();
 
 private:
     Ui::About *ui;
+
 };
 
 #endif // ABOUT_H

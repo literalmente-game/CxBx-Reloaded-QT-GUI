@@ -9,7 +9,7 @@ Config::Config()
        QStandardPaths::GenericDataLocation: Where the file will be written(AppData/Local).
      */
     QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-    settingsConfig = new QSettings(dir + "/cxbx_reloaded/config.ini", QSettings::IniFormat);
+    settingsConfig = new QSettings(dir + "/CXBX_Reloaded/config.ini", QSettings::IniFormat);
     qDebug() << "CONFIG CLASS: " << dir;
     qDebug() << "CONFIG CLASS: "<< this->loadDirectory();
 }
