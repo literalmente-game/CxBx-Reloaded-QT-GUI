@@ -10,15 +10,14 @@ Emu_Settings::Emu_Settings(QWidget *parent) :
     ui(new Ui::Emu_Settings)
 {
     ui->setupUi(this);
+
+    this->ui->edtCxbx->setText(configClass.loadDirectory().trimmed());
 }
 
 Emu_Settings::~Emu_Settings()
 {
     delete ui;
 }
-
-
-
 
 /*CXBX Search Button: Load the Dialog to search cxbx's path*/
 void Emu_Settings::on_btnSearch_Cxbx_clicked()
@@ -48,7 +47,7 @@ void Emu_Settings::on_buttonBox_accepted()
 {
     /*Check QLineEdit is filled*/
     if(!ui->edtCxbx->text().isEmpty()){
-        config->saveDirectory(this->ui->edtCxbx->text().trimmed());
+        configClass.saveDirectory(this->ui->edtCxbx->text().trimmed());
     }
 
     /*Close emu_settings.ui dialog*/

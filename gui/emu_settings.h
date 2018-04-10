@@ -27,7 +27,7 @@ private slots:
 
 private:
     Ui::Emu_Settings *ui;
-    Config *config;
+    Config configClass;
 };
 
 #endif // EMU_SETTINGS_H

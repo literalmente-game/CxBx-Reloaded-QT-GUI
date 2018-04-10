@@ -51,7 +51,7 @@ private:
 
     Emu_Settings *emu;
     About *about;
-    Config *config;
+    Config configClass;
 };
 
 #endif // MAINWINDOW_H

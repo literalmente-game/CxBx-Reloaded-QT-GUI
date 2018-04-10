@@ -24,8 +24,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>550</width>
-    <height>350</height>
+    <width>461</width>
+    <height>267</height>
    </size>
   </property>
   <property name="font">
@@ -48,6 +48,12 @@
      <item>
       <widget class="QLabel" name="lblCxbxLogo">
        <property name="minimumSize">
+        <size>
+         <width>218</width>
+         <height>216</height>
+        </size>
+       </property>
+       <property name="maximumSize">
         <size>
          <width>218</width>
          <height>216</height>

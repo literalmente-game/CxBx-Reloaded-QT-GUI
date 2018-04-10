@@ -9,19 +9,18 @@ Config::Config()
        QStandardPaths::GenericDataLocation: Where the file will be written(AppData/Local).
      */
     QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-    settingsConfig = new QSettings(dir + "/CXBX_Reloaded/config.ini", QSettings::IniFormat);
-    qDebug() << "CONFIG CLASS: " << dir;
-    qDebug() << "CONFIG CLASS: "<< this->loadDirectory();
+    settingsConfig = new QSettings(dir + "/CXBX-Reloaded/config.ini", QSettings::IniFormat);
 }
 
 QString Config::loadDirectory()
 {
-    return this->settingsConfig->value("CXBX_EXECUTABLE", "").toString();
+    qDebug() << "CONFIG CLASS, METHOD LOADDIRECTORY: " << "In";
+    return this->settingsConfig->value("CXBX_EXE", "").toString();
 }
 
 void Config::saveDirectory(QString path)
 {
-    qDebug() << "CONFIG CLASS: " << path;
-    this->settingsConfig->setValue("CXBX_EXECUTABLE", path);
-    qDebug() << "CONFIG CLASS: " << "Done";
+    qDebug() << "CONFIG CLASS, METHOD SAVEDIRECTORY: " << path;
+    this->settingsConfig->setValue("CXBX_EXE", path);
+    qDebug() << "CONFIG CLASS, METHOD SAVEDIRECTORY: " << "Done";
 }

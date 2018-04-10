@@ -14,11 +14,11 @@ About::About(QWidget *parent) :
 
     /*For directories use "\\" to navegate the folders*/
     /*For internal directories in project, use ":/"*/
-    QPixmap pix(":/images/Xbox-Logo.jpg");
+    QPixmap pix(":/images/Cxbx-Logo-Temp.png");
     int w = ui->lblCxbxLogo->width();
     int h = ui->lblCxbxLogo->height();
     qDebug() << w << h;
-    ui->lblCxbxLogo->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatioByExpanding));
+    ui->lblCxbxLogo->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatioByExpanding));
 }
 
 About::~About()

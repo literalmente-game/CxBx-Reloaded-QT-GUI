@@ -59,7 +59,7 @@ void MainWindow::on_actionEmulationStart_triggered()
     QString xbePath = model->getXbe(index)->m_szPath;
 
     /*Emulator runs, but doesn't execute the game in the path.*/
-    QString program = config->loadDirectory();
+    QString program = configClass.loadDirectory();
     this->emulatorProcess.start(program, QStringList() << xbePath);
 }
 
@@ -72,8 +72,8 @@ void MainWindow::on_actionOpen_Xbe_triggered()
    //Run the .xbe as an argument for the emulator if the argument isn't empty
     if (!fileName.isEmpty()){
 
-        QString program = config->loadDirectory();
-        qDebug() << "MainWindow: " << program;
+        QString program = configClass.loadDirectory();
+        qDebug() << "MAINWINDOW, configClass: " << program;
         QStringList arguments;
         QString temp_path; // = "\"" + fileName + "\""; enquotations are not working for some reason?
         temp_path = QDir::toNativeSeparators(fileName); //QDir::toNativeSeparators makes sure the path obtained by QFileDialog::getOpenFileName is valid as a native path
