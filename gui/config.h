@@ -4,10 +4,8 @@
 #include <QSettings>
 
 
-class Config : public QObject
+class Config
 {
-    Q_OBJECT
-
 public:
     Config();
     QString loadDirectory();
