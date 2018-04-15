@@ -24,8 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->gameTableView->setModel(new XbeTableModel(this->settings->value("game_dir").toString()));
     this->gameTableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
-
-    this->emu = new Emu_Settings(this);
 }
 
 MainWindow::~MainWindow()
@@ -60,8 +58,8 @@ void MainWindow::on_actionEmulationStart_triggered()
 
     QString xbePath = model->getXbe(index)->m_szPath;
 
-    /*The emulator open, but doesn't execute the game in this path.*/
-    QString program = emu->loadDir(); /*OLD CODE: this->settings->value("cxbx_path").toString();*/
+    /*Emulator runs, but doesn't execute the game in the path.*/
+    QString program = configClass.loadDirectory();
     this->emulatorProcess.start(program, QStringList() << xbePath);
 }
 
@@ -74,7 +72,8 @@ void MainWindow::on_actionOpen_Xbe_triggered()
    //Run the .xbe as an argument for the emulator if the argument isn't empty
     if (!fileName.isEmpty()){
 
-        QString program = emu->loadDir(); // "E:\\Emulators\\XBox\\Emulators\\11-30\\Cxbx.exe " //hard coded path, should be dynamic in the future
+        QString program = configClass.loadDirectory();
+        qDebug() << "MAINWINDOW, configClass: " << program;
         QStringList arguments;
         QString temp_path; // = "\"" + fileName + "\""; enquotations are not working for some reason?
         temp_path = QDir::toNativeSeparators(fileName); //QDir::toNativeSeparators makes sure the path obtained by QFileDialog::getOpenFileName is valid as a native path
@@ -90,12 +89,16 @@ void MainWindow::on_actionOpen_Xbe_triggered()
 //Load the About window
 void MainWindow::on_actionAbout_triggered()
 {
-
+    about = new About();
+    about->setModal(true);
+    about->show();
 }
 
 //Load the Emulation settings window
 void MainWindow::on_actionEmulation_triggered()
 {
+    emu = new Emu_Settings(this);
+    emu->setModal(true);
     emu->show();
 }
 
@@ -103,4 +106,11 @@ void MainWindow::on_actionEmulationStop_triggered()
 {
     if(this->emulatorProcess.state() == QProcess::Running)
         this->emulatorProcess.terminate();
+}
+
+void MainWindow::on_actionVideo_triggered()
+{
+    emu = new Emu_Settings(this);
+    emu->setModal(true);
+    emu->show();
 }

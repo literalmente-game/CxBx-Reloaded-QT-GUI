@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QSettings>
 
+#include "config.h"
+
 namespace Ui {
 class Emu_Settings;
 }
@@ -14,7 +16,6 @@ class Emu_Settings : public QDialog
 
 public:
     explicit Emu_Settings(QWidget *parent = 0);
-    QString loadDir();
     ~Emu_Settings();
 
 private slots:
@@ -26,9 +27,7 @@ private slots:
 
 private:
     Ui::Emu_Settings *ui;
-    QSettings *directory;
-
-    void saveDir(QList<QString> list);
+    Config configClass;
 };
 
 #endif // EMU_SETTINGS_H

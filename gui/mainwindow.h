@@ -6,8 +6,11 @@
 #include <QSettings>
 #include <QProcess>
 #include "models/xbetablemodel.h"
+
 #include "emu_settings.h"
 #include "ui_emu_settings.h"
+#include "config.h"
+#include "about.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,12 +41,17 @@ private slots:
 
     void on_actionEmulationStop_triggered();
 
+    void on_actionVideo_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTableView *gameTableView;
     QSettings *settings;
     QProcess emulatorProcess;
+
     Emu_Settings *emu;
+    About *about;
+    Config configClass;
 };
 
 #endif // MAINWINDOW_H

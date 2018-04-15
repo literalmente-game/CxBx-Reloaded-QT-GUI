@@ -2,158 +2,380 @@
 <ui version="4.0">
  <class>Emu_Settings</class>
  <widget class="QDialog" name="Emu_Settings">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>659</width>
-    <height>515</height>
+    <width>500</width>
+    <height>600</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>659</width>
-    <height>515</height>
+    <width>500</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>659</width>
-    <height>515</height>
+    <width>500</width>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Emulation Settings</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>480</y>
-     <width>166</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
-  <widget class="QTabWidget" name="tabEmulation">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>641</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>1</number>
-   </property>
-   <widget class="QWidget" name="tab_emu">
-    <attribute name="title">
-     <string>Emulation</string>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="tab_dir">
-    <attribute name="title">
-     <string>Directories</string>
-    </attribute>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>511</width>
-       <height>111</height>
-      </rect>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="emulationsTab">
+     <property name="autoFillBackground">
+      <bool>false</bool>
      </property>
-     <property name="title">
-      <string>Directories</string>
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <widget class="QWidget" name="horizontalLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>491</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_Cxbx">
-       <property name="leftMargin">
-        <number>3</number>
-       </property>
-       <property name="rightMargin">
-        <number>3</number>
-       </property>
+     <widget class="QWidget" name="emulationTab">
+      <attribute name="title">
+       <string>Emulation</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLabel" name="lblCxbx">
-         <property name="text">
-          <string>Cxbx:</string>
+        <widget class="QGroupBox" name="gbLle">
+         <property name="title">
+          <string>LLE (Experimental)</string>
          </property>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <widget class="QCheckBox" name="cbLleJit">
+            <property name="text">
+             <string>LLE JIT</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbLleApu">
+            <property name="text">
+             <string>LLE APU</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbLleGpu">
+            <property name="text">
+             <string>LLE GPU</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="edtCxbx"/>
+        <widget class="QGroupBox" name="gbHacks">
+         <property name="title">
+          <string>Hacks</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <item>
+           <widget class="QCheckBox" name="cbDisablePixel">
+            <property name="text">
+             <string>Disable Pixel Shader</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbUncapFrame">
+            <property name="text">
+             <string>Uncap Framerate</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbRunXboxThread">
+            <property name="text">
+             <string>Run Xbox threads on all cores</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btnSearch_Cxbx">
-         <property name="text">
-          <string>Search</string>
+        <spacer name="vsEmulation">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-        </widget>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>70</y>
-        <width>491</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_Roms">
-       <property name="leftMargin">
-        <number>3</number>
-       </property>
-       <property name="rightMargin">
-        <number>3</number>
-       </property>
+     <widget class="QWidget" name="videoTab">
+      <attribute name="title">
+       <string>Video</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
-        <widget class="QLabel" name="lblRoms">
-         <property name="text">
-          <string>Roms:</string>
+        <widget class="QGroupBox" name="gbVideo">
+         <property name="title">
+          <string>Video</string>
          </property>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <widget class="QLabel" name="lblDisplayAdapter">
+            <property name="text">
+             <string>Display Adapter:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cboxDisplayAdapter"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblAPI">
+            <property name="text">
+             <string>API:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cboxAPI"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblVideoResolution">
+            <property name="text">
+             <string>Video Resolution:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cboxVideoResolution"/>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbUseHardwareVideo">
+            <property name="text">
+             <string>Use Hardware Video Mode</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbVsync">
+            <property name="text">
+             <string>Force V-Sync</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbEnableHardwareYUV">
+            <property name="text">
+             <string>Enable Hardware YUV Overlays</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="edtRoms">
-         <property name="enabled">
-          <bool>false</bool>
+        <spacer name="vsVideo">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="audioTab">
+      <attribute name="title">
+       <string>Audio</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QGroupBox" name="gbAudio">
+         <property name="title">
+          <string>Audio</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLabel" name="lblAudioAdapter">
+            <property name="text">
+             <string>Audio Adapter:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cboxAudioAdapter"/>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbEnablePCM">
+            <property name="text">
+             <string>Enable PCM</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbEnableXADPCM">
+            <property name="text">
+             <string>Enable XADPCM</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbEnableUnkownCodec">
+            <property name="text">
+             <string>Enable Unknown Codec</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btnSearch_Roms">
-         <property name="text">
-          <string>Search</string>
+        <spacer name="vsAudio">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="directoryTab">
+      <attribute name="title">
+       <string>Directories</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QGroupBox" name="gbDirectories">
+         <property name="title">
+          <string>Directories</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="hl_Cxbx">
+            <property name="leftMargin">
+             <number>3</number>
+            </property>
+            <property name="rightMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lblCxbx">
+              <property name="text">
+               <string>Cxbx:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="edtCxbx"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSearch_Cxbx">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="hl_Roms">
+            <property name="leftMargin">
+             <number>3</number>
+            </property>
+            <property name="rightMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lblRoms">
+              <property name="text">
+               <string>Roms:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="edtRoms">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSearch_Roms">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
+       </item>
+       <item>
+        <spacer name="vsDirectories">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
     </widget>
-   </widget>
-  </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="gbInfo">
+     <property name="title">
+      <string>Information</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_7">
+      <item>
+       <widget class="QLabel" name="lblInfo">
+        <property name="text">
+         <string>&lt;INFORMATION&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

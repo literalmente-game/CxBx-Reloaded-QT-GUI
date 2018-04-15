@@ -60,7 +60,7 @@
      <x>0</x>
      <y>0</y>
      <width>892</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -82,11 +82,6 @@
      <string>Edit</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>View</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
      <string>Settings</string>
@@ -96,6 +91,8 @@
     <addaction name="actionSound"/>
     <addaction name="separator"/>
     <addaction name="actionEmulation"/>
+    <addaction name="separator"/>
+    <addaction name="actionHLE_Cache"/>
    </widget>
    <widget class="QMenu" name="menuEmulation">
     <property name="title">
@@ -110,12 +107,19 @@
     <addaction name="separator"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuDebug">
+    <property name="title">
+     <string>Debug</string>
+    </property>
+    <addaction name="actionOutput_GUI"/>
+    <addaction name="actionOutput_Kernel"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuView"/>
    <addaction name="menuSettings"/>
    <addaction name="menuEmulation"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuDebug"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="iconSize">
@@ -172,7 +176,7 @@
   </action>
   <action name="actionGo_To_The_Official_CxBx_Reloaded_Website">
    <property name="text">
-    <string>Go To The Official CxBx-Reloaded Website...</string>
+    <string>CxBx-Reloaded Website...</string>
    </property>
   </action>
   <action name="actionAbout">
@@ -234,6 +238,21 @@
   <action name="actionEmulation">
    <property name="text">
     <string>Emulation</string>
+   </property>
+  </action>
+  <action name="actionOutput_GUI">
+   <property name="text">
+    <string>Output (GUI)</string>
+   </property>
+  </action>
+  <action name="actionOutput_Kernel">
+   <property name="text">
+    <string>Output (Kernel)</string>
+   </property>
+  </action>
+  <action name="actionHLE_Cache">
+   <property name="text">
+    <string>HLE Cache</string>
    </property>
   </action>
  </widget>
