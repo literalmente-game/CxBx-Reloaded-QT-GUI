@@ -2,14 +2,16 @@
 #define CONFIG_H
 
 #include <QSettings>
+#include <QStringList>
 
 
 class Config
 {
 public:
     Config();
-    QString loadDirectory();
-    void saveDirectory(QString path);
+    QStringList loadDirectory();
+    void saveDirectory(QString cxbxPath, QString romsPath);
+    void saveEmulation();
 
 private:
     QSettings *settingsConfig;

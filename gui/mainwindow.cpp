@@ -16,20 +16,20 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QString appData = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+    //QString appData = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
 
-    this->settings = new QSettings(appData + "/cxbx-reloaded/conf.ini", QSettings::IniFormat);
+    //this->settings = new QSettings(appData + "/cxbx-reloaded/conf.ini", QSettings::IniFormat);
 
     this->gameTableView = this->findChild<QTableView*>("gameTableView");
 
-    this->gameTableView->setModel(new XbeTableModel(this->settings->value("game_dir").toString()));
+    this->gameTableView->setModel(new XbeTableModel(configClass.loadDirectory()[1]));
     this->gameTableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete this->settings;
+    //delete this->settings;
 }
 
 //Simple exit instruction
@@ -59,7 +59,7 @@ void MainWindow::on_actionEmulationStart_triggered()
     QString xbePath = model->getXbe(index)->m_szPath;
 
     /*Emulator runs, but doesn't execute the game in the path.*/
-    QString program = configClass.loadDirectory();
+    QString program = configClass.loadDirectory()[0];
     this->emulatorProcess.start(program, QStringList() << xbePath);
 }
 
@@ -72,7 +72,7 @@ void MainWindow::on_actionOpen_Xbe_triggered()
    //Run the .xbe as an argument for the emulator if the argument isn't empty
     if (!fileName.isEmpty()){
 
-        QString program = configClass.loadDirectory();
+        QString program = configClass.loadDirectory()[0];
         qDebug() << "MAINWINDOW, configClass: " << program;
         QStringList arguments;
         QString temp_path; // = "\"" + fileName + "\""; enquotations are not working for some reason?

@@ -41,7 +41,7 @@
       <bool>false</bool>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="emulationTab">
       <attribute name="title">
@@ -319,7 +319,7 @@
             <item>
              <widget class="QLineEdit" name="edtRoms">
               <property name="enabled">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
              </widget>
             </item>

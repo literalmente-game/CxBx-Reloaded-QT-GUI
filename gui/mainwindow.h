@@ -46,7 +46,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTableView *gameTableView;
-    QSettings *settings;
+    //QSettings *settings;
     QProcess emulatorProcess;
 
     Emu_Settings *emu;

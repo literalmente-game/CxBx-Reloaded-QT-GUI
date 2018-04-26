@@ -11,7 +11,8 @@ Emu_Settings::Emu_Settings(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->ui->edtCxbx->setText(configClass.loadDirectory().trimmed());
+    this->ui->edtCxbx->setText(configClass.loadDirectory()[0]);
+    this->ui->edtRoms->setText(configClass.loadDirectory()[1]);
 }
 
 Emu_Settings::~Emu_Settings()
@@ -34,12 +35,16 @@ void Emu_Settings::on_btnSearch_Cxbx_clicked()
     this->ui->edtCxbx->setText(directory);
 }
 
-/*Search path of roms. Maybe will be removed.*/
 void Emu_Settings::on_btnSearch_Roms_clicked()
 {
-    /*QString directory = QFileDialog::getExistingDirectory(this, tr("Select the rom dir"), nullptr, QFileDialog::ShowDirsOnly);
-    dir->setDirRom(directory);
-    this->ui->edtRoms->setText(dir->getDirRom());*/
+    QString qlDirRoms = this->ui->edtRoms->text().trimmed();
+    QString directory = QFileDialog::getExistingDirectory(this, tr("Select roms directory"), "", QFileDialog::ShowDirsOnly);
+    qDebug() << directory;
+
+    if(directory.isEmpty())
+        directory = qlDirRoms;
+
+    this->ui->edtRoms->setText(directory);
 }
 
 /*Save Config in a ini file. Key, Value*/
@@ -47,7 +52,10 @@ void Emu_Settings::on_buttonBox_accepted()
 {
     /*Check QLineEdit is filled*/
     if(!ui->edtCxbx->text().isEmpty()){
-        configClass.saveDirectory(this->ui->edtCxbx->text().trimmed());
+        QString cxbxPath = this->ui->edtCxbx->text().trimmed();
+        QString romsPath = this->ui->edtRoms->text().trimmed();
+        configClass.saveDirectory(cxbxPath, romsPath);
+        configClass.saveEmulation();
     }
 
     /*Close emu_settings.ui dialog*/
