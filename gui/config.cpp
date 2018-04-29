@@ -24,6 +24,7 @@ QStringList Config::loadDirectory()
     listDir.append(rom);
 
     this->settingsConfig->endGroup();
+
     return listDir;
 }
 
@@ -32,8 +33,10 @@ void Config::saveDirectory(QString cxbxPath, QString romsPath)
     qDebug() << "CONFIG CLASS, METHOD SAVEDIRECTORY: " << cxbxPath;
     qDebug() << "CONFIG CLASS, METHOD SAVEDIRECTORY: " << romsPath;
     this->settingsConfig->beginGroup("Directories");
+
     this->settingsConfig->setValue("CXBX_EXE", cxbxPath);
     this->settingsConfig->setValue("ROMS", romsPath);
+
     this->settingsConfig->endGroup();
 }
 

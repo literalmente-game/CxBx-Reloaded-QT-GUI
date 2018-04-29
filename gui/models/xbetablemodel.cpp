@@ -43,9 +43,11 @@ QVariant XbeTableModel::data(const QModelIndex &index, int role) const
 
 void XbeTableModel::scanDirectory(QString directory)
 {
-    QDirIterator it(directory, QStringList() << "*.xbe", QDir::Files,
+    /*QDirIterator it(directory, QStringList() << "*.xbe", QDir::Files,
+                    QDirIterator::Subdirectories | QDirIterator::FollowSymlinks);*/
+    QDirIterator it(directory, QStringList() << "Default.xbe", QDir::Files,
                     QDirIterator::Subdirectories | QDirIterator::FollowSymlinks);
-    Xbe *xbe = NULL;
+    Xbe *xbe = nullptr;
 
     while(it.hasNext()) {
         QString nextFile = it.next();

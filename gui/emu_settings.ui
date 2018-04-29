@@ -41,7 +41,7 @@
       <bool>false</bool>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="emulationTab">
       <attribute name="title">
@@ -105,6 +105,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="cbPatchCPU">
+            <property name="text">
+             <string>Patch CPU Frequency (rdtsc)</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -142,7 +149,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="cboxDisplayAdapter"/>
+           <widget class="QComboBox" name="combDisplayAdapter"/>
           </item>
           <item>
            <widget class="QLabel" name="lblAPI">
@@ -152,7 +159,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="cboxAPI"/>
+           <widget class="QComboBox" name="combAPI"/>
           </item>
           <item>
            <widget class="QLabel" name="lblVideoResolution">
@@ -162,7 +169,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="cboxVideoResolution"/>
+           <widget class="QComboBox" name="combVideoResolution"/>
           </item>
           <item>
            <widget class="QCheckBox" name="cbUseHardwareVideo">
@@ -222,7 +229,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="cboxAudioAdapter"/>
+           <widget class="QComboBox" name="combAudioAdapter"/>
           </item>
           <item>
            <widget class="QCheckBox" name="cbEnablePCM">
@@ -260,6 +267,20 @@
           </size>
          </property>
         </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="controllerTab">
+      <attribute name="title">
+       <string>Controller</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_13">
+       <item>
+        <widget class="QCheckBox" name="cbXinput">
+         <property name="text">
+          <string>XInput</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -347,6 +368,339 @@
           </size>
          </property>
         </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="eepronTab">
+      <attribute name="title">
+       <string>Eepron</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_12">
+       <item>
+        <layout class="QHBoxLayout" name="hlConfunder">
+         <item>
+          <widget class="QLabel" name="lblConfunder">
+           <property name="text">
+            <string>Confounder</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="edtConfunder">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlHDDKey">
+         <item>
+          <widget class="QLabel" name="lblHDDKey">
+           <property name="text">
+            <string>HDD Key</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="edtHDDKey">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlXboxRegion">
+         <item>
+          <widget class="QLabel" name="lblXboxRegion">
+           <property name="text">
+            <string>Xbox Region</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combXboxRegion">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlSerialNum">
+         <item>
+          <widget class="QLabel" name="lblSerialNum">
+           <property name="text">
+            <string>Serial Number</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="edtSerialNum">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlMacAddress">
+         <item>
+          <widget class="QLabel" name="lblMacAddress">
+           <property name="text">
+            <string>MAC Address</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="edtMacAddress">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlOnlineKey">
+         <item>
+          <widget class="QLabel" name="lblOnlineKey">
+           <property name="text">
+            <string>Online Key</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="edtOnlineKey">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlAvRegion">
+         <item>
+          <widget class="QLabel" name="lblAvRegion">
+           <property name="text">
+            <string>AV Region</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combAvRegion">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlLanguage">
+         <item>
+          <widget class="QLabel" name="lblLanguage">
+           <property name="text">
+            <string>Language</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combLanguage">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlVideoSettings">
+         <item>
+          <widget class="QLabel" name="lblVideoSettings">
+           <property name="text">
+            <string>Video Settings</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combVideoSettings">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlAudioSettings">
+         <item>
+          <widget class="QLabel" name="lblAudioSettings">
+           <property name="text">
+            <string>Audio Settings</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combAudioSettings">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlGameParental">
+         <item>
+          <widget class="QLabel" name="lblGameParental">
+           <property name="text">
+            <string>Game Parental Control</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combGameParental">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlParentalPass">
+         <item>
+          <widget class="QLabel" name="lblParentalPass">
+           <property name="text">
+            <string>Parental Password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="edtParentalPass">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlMovieParental">
+         <item>
+          <widget class="QLabel" name="lblMovieParental">
+           <property name="text">
+            <string>Movie Parental Control</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combMovieParental">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlDVDRegion">
+         <item>
+          <widget class="QLabel" name="lblDVDRegion">
+           <property name="text">
+            <string>DVD Region</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combDVDRegion">
+           <property name="maximumSize">
+            <size>
+             <width>225</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hlColorSystem">
+         <item>
+          <widget class="QCheckBox" name="cbNtsc1080i">
+           <property name="text">
+            <string>PAL 60Hz</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="cbNtsc480">
+           <property name="text">
+            <string>NTSC 480p</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="cbPal60">
+           <property name="text">
+            <string>NTSC 720p</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="cbNtsc720">
+           <property name="text">
+            <string>NTSC 1080i</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>

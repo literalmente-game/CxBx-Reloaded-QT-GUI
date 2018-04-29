@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //this->settings = new QSettings(appData + "/cxbx-reloaded/conf.ini", QSettings::IniFormat);
 
     this->gameTableView = this->findChild<QTableView*>("gameTableView");
-
     this->gameTableView->setModel(new XbeTableModel(configClass.loadDirectory()[1]));
     this->gameTableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 }
@@ -80,21 +79,21 @@ void MainWindow::on_actionOpen_Xbe_triggered()
         arguments << temp_path;
 
         QProcess *myProcess = new QProcess(qApp);
-        myProcess->start(program,arguments);
+        myProcess->start(program, arguments);
 
       }
 }
 
 
-//Load the About window
+//Load About window
 void MainWindow::on_actionAbout_triggered()
 {
-    about = new About();
+    about = new About(this);
     about->setModal(true);
     about->show();
 }
 
-//Load the Emulation settings window
+//Load Emulation settings window
 void MainWindow::on_actionEmulation_triggered()
 {
     emu = new Emu_Settings(this);
