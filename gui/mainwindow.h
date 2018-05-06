@@ -46,12 +46,14 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTableView *gameTableView;
-    QSettings *settings;
-    QProcess emulatorProcess;
+    //QSettings *settings;
+    QProcess *emulatorProcess;
 
     Emu_Settings *emu;
     About *about;
     Config configClass;
+
+    void runCxbx(QString cxbxDir, QStringList arguments);
 };
 
 #endif // MAINWINDOW_H

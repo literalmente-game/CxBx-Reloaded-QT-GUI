@@ -16,20 +16,19 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QString appData = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+    //QString appData = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
 
-    this->settings = new QSettings(appData + "/cxbx-reloaded/conf.ini", QSettings::IniFormat);
+    //this->settings = new QSettings(appData + "/cxbx-reloaded/conf.ini", QSettings::IniFormat);
 
     this->gameTableView = this->findChild<QTableView*>("gameTableView");
-
-    this->gameTableView->setModel(new XbeTableModel(this->settings->value("game_dir").toString()));
+    this->gameTableView->setModel(new XbeTableModel(configClass.loadDirectory()[1]));
     this->gameTableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete this->settings;
+    //delete this->settings;
 }
 
 //Simple exit instruction
@@ -58,9 +57,11 @@ void MainWindow::on_actionEmulationStart_triggered()
 
     QString xbePath = model->getXbe(index)->m_szPath;
 
-    /*Emulator runs, but doesn't execute the game in the path.*/
-    QString program = configClass.loadDirectory();
-    this->emulatorProcess.start(program, QStringList() << xbePath);
+    /*Runs Cxbx process.*/
+    QString cxbxDir = configClass.loadDirectory()[0];
+    QStringList arguments;
+    arguments.append(QDir::toNativeSeparators(xbePath));
+    this->runCxbx(cxbxDir, arguments);
 }
 
 //Open a dialog window to load an .xbe and run on the emulator
@@ -71,30 +72,24 @@ void MainWindow::on_actionOpen_Xbe_triggered()
 
    //Run the .xbe as an argument for the emulator if the argument isn't empty
     if (!fileName.isEmpty()){
-
-        QString program = configClass.loadDirectory();
-        qDebug() << "MAINWINDOW, configClass: " << program;
+        QString cxbxDir = configClass.loadDirectory()[0];
+        qDebug() << "MAINWINDOW, configClass: " << cxbxDir;
         QStringList arguments;
-        QString temp_path; // = "\"" + fileName + "\""; enquotations are not working for some reason?
-        temp_path = QDir::toNativeSeparators(fileName); //QDir::toNativeSeparators makes sure the path obtained by QFileDialog::getOpenFileName is valid as a native path
-        arguments << temp_path;
-
-        QProcess *myProcess = new QProcess(qApp);
-        myProcess->start(program,arguments);
-
+        arguments.append(QDir::toNativeSeparators(fileName)); //QDir::toNativeSeparators makes sure the path obtained by QFileDialog::getOpenFileName is valid as a native path
+        this->runCxbx(cxbxDir, arguments);
       }
 }
 
 
-//Load the About window
+//Load About window
 void MainWindow::on_actionAbout_triggered()
 {
-    about = new About();
+    about = new About(this);
     about->setModal(true);
     about->show();
 }
 
-//Load the Emulation settings window
+//Load Emulation settings window
 void MainWindow::on_actionEmulation_triggered()
 {
     emu = new Emu_Settings(this);
@@ -104,8 +99,8 @@ void MainWindow::on_actionEmulation_triggered()
 
 void MainWindow::on_actionEmulationStop_triggered()
 {
-    if(this->emulatorProcess.state() == QProcess::Running)
-        this->emulatorProcess.terminate();
+    if(this->emulatorProcess->isOpen())
+        this->emulatorProcess->terminate();
 }
 
 void MainWindow::on_actionVideo_triggered()
@@ -113,4 +108,11 @@ void MainWindow::on_actionVideo_triggered()
     emu = new Emu_Settings(this);
     emu->setModal(true);
     emu->show();
+}
+
+/*Runs Cxbx process.*/
+void MainWindow::runCxbx(QString cxbxDir, QStringList arguments)
+{
+    emulatorProcess = new QProcess(this);
+    this->emulatorProcess->start(cxbxDir, arguments);
 }

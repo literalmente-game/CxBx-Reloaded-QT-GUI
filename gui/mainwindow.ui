@@ -77,27 +77,33 @@
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
-   <widget class="QMenu" name="menuEdit">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
      <string>Settings</string>
     </property>
+    <widget class="QMenu" name="menuHLE_Cache">
+     <property name="title">
+      <string>HLE Cache</string>
+     </property>
+     <addaction name="actionClear"/>
+     <addaction name="actionRescan"/>
+    </widget>
     <addaction name="actionController"/>
     <addaction name="actionVideo"/>
     <addaction name="actionSound"/>
     <addaction name="separator"/>
     <addaction name="actionEmulation"/>
     <addaction name="separator"/>
-    <addaction name="actionHLE_Cache"/>
+    <addaction name="menuHLE_Cache"/>
    </widget>
    <widget class="QMenu" name="menuEmulation">
     <property name="title">
      <string>Emulation</string>
     </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionStart_Debugger"/>
+    <addaction name="separator"/>
+    <addaction name="actionStop"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -111,13 +117,26 @@
     <property name="title">
      <string>Debug</string>
     </property>
-    <addaction name="actionOutput_GUI"/>
-    <addaction name="actionOutput_Kernel"/>
+    <widget class="QMenu" name="menuOutput_GUI">
+     <property name="title">
+      <string>Output (GUI)</string>
+     </property>
+     <addaction name="actionConsole"/>
+     <addaction name="actionFile"/>
+    </widget>
+    <widget class="QMenu" name="menuOutput_Kernel">
+     <property name="title">
+      <string>Output (Kernel)</string>
+     </property>
+     <addaction name="actionConsole_2"/>
+     <addaction name="actionFile_2"/>
+    </widget>
+    <addaction name="menuOutput_GUI"/>
+    <addaction name="menuOutput_Kernel"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuEdit"/>
-   <addaction name="menuSettings"/>
    <addaction name="menuEmulation"/>
+   <addaction name="menuSettings"/>
    <addaction name="menuHelp"/>
    <addaction name="menuDebug"/>
   </widget>
@@ -240,19 +259,49 @@
     <string>Emulation</string>
    </property>
   </action>
-  <action name="actionOutput_GUI">
+  <action name="actionConsole">
    <property name="text">
-    <string>Output (GUI)</string>
+    <string>Console</string>
    </property>
   </action>
-  <action name="actionOutput_Kernel">
+  <action name="actionFile">
    <property name="text">
-    <string>Output (Kernel)</string>
+    <string>File...</string>
    </property>
   </action>
-  <action name="actionHLE_Cache">
+  <action name="actionConsole_2">
    <property name="text">
-    <string>HLE Cache</string>
+    <string>Console</string>
+   </property>
+  </action>
+  <action name="actionFile_2">
+   <property name="text">
+    <string>File...</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear entire HLE cache</string>
+   </property>
+  </action>
+  <action name="actionRescan">
+   <property name="text">
+    <string>Rescan title HLE cache</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionStart_Debugger">
+   <property name="text">
+    <string>Start Debugger...</string>
    </property>
   </action>
  </widget>
