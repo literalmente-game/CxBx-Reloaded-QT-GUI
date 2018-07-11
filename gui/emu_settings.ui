@@ -41,7 +41,7 @@
       <bool>false</bool>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="emulationTab">
       <attribute name="title">
@@ -371,9 +371,9 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="eepronTab">
+     <widget class="QWidget" name="eepromTab">
       <attribute name="title">
-       <string>Eepron</string>
+       <string>EEPROM</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_12">
        <item>
